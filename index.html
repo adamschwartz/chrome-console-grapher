@@ -1,0 +1,17 @@
+<html>
+<head></head>
+<body>
+<script src="chrome.console.grapher.js"></script>
+<script>
+    (function(){
+        var points = [];
+
+        while (points.length < 200) {
+            points.push(Math.floor(Math.random() * 100));
+        }
+
+        console.graph(points);
+    })();
+</script>
+</body>
+</html>
