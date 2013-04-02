@@ -1,17 +1,109 @@
+<!DOCTYPE html>
 <html>
-<head></head>
-<body>
-<script src="chrome.console.grapher.js"></script>
-<script>
-    (function(){
-        var points = [];
+    <head>
+        <meta charset="utf-8">
+        <title>Chrome Console Grapher</title>
+        <style>
+            * {
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                margin: 0;
+            }
 
-        while (points.length < 200) {
-            points.push(Math.floor(Math.random() * 100));
-        }
+            message {
+                position: fixed;
+                color: #444;
+                font-size: 20px;
+                width: 420px;
+                text-align: left;
+                margin-left: -210px;
+                left: 50%;
+                top: 50%;
+                margin-top: -50px;
+                z-index: 9;
+            }
 
-        console.graph(points);
-    })();
-</script>
-</body>
+            instructions {
+                font-size: 150%;
+            }
+
+            #retweet_button {
+                position: fixed;
+                bottom: 30px;
+                left: 50%;
+                width: 100px;
+                margin-left: -100px;
+            }
+
+            credits {
+                position: fixed;
+                bottom: 35px;
+                left: 50%;
+                width: 130px;
+                font-size: 13px;
+                color: #aaa;
+            }
+
+            credits a, credits a:link, credits a:visited {
+                color: #aaa;
+                text-decoration: none;
+            }
+
+            credits a:hover {
+                text-decoration: underline;
+                color: #444;
+            }
+        </style>
+    </head>
+    <body>
+        <message>
+            <instructions>&nbsp;</instructions>
+        </message>
+
+        <script src="chrome.console.grapher.js"></script>
+        <script>
+            (function(){
+                if (/Mac OS/.test(navigator.appVersion)) {
+                    document.getElementsByTagName('instructions')[0].innerHTML = 'Press ⌘ + ⌥ + I'
+                } else {
+                    document.getElementsByTagName('instructions')[0].innerHTML = 'Press Ctrl + Shift + I'
+                }
+
+                (function(){
+                    var points = [];
+
+                    while (points.length < 200) {
+                        points.push(Math.floor(Math.random() * 100));
+                    }
+
+                    console.graph(points);
+                })();
+            })();
+        </script>
+
+        <!-- GitHub -->
+        <a href="https://github.com/adamschwartz/chrome-console-grapher-detector"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
+        <!-- Share -->
+        <div id="retweet_button">
+            <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://adamschwartz.co/chrome-console-grapher/" data-text="Draw graphs using console.log. By @adamfschwartz." data-count="horizontal" data-related="adamfschwartz">Tweet</a>
+            <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+        </div>
+
+        <credits>
+            By <a href="http://adamschwartz.co">Adam Schwartz</a>
+        </credits>
+
+        <!-- Google Analytics -->
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-400802-11']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        </script>
+    </body>
 </html>
