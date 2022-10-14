@@ -4,4 +4,4 @@
 
 Make pretty charts in the console. They look like this:
 
-![Example bar chart](./example.png)
+![Example bar chart](/example.png?raw=true)
